@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design with flexbox</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: blue;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .container {
+            width: 700px;
+            background: rgba(89, 147, 197, 0.479);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: black;
+        }
+        .box {
+            width: 350px;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .box1 {
+           
+            border: 1px solid blue;
+            color: white;
+        }
+        .box2 {
+            width: 300px;
+            height: 300px;
+            margin: auto;
+            background: rgb(72, 72, 231);
+            border: 1px solid black;
+            border-radius: 16px;
+        }
+        p {
+            font-size: 30px;
+            position: absolute;
+            top: 60px;
+            color: red;
+
+        }
+        /*style for responsiveness*/
+        @media screen  and (max-width: 718px){
+            body {
+                height: auto;
+                
+                background: yellowgreen;
+            }
+            .container {
+                margin-top: 200px;
+                width: auto;
+                margin-bottom: 200px;
+                flex-direction: column;
+            }
+            .box2 {
+                margin: 20px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <p>SPLLI<br>TTER</p>
+    <div class="container">
+        <div class="box1 box">Hey I am box1</div>
+        <div class="box2 box">Hey I am box2</div>
+    </div>
+</body>
+</html>
