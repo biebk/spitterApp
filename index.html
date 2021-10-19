@@ -1,84 +1,415 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Design with flexbox</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
         * {
             padding: 0;
             margin: 0;
             box-sizing: border-box;
         }
+
         body {
-            background: blue;
+            background: rgb(162, 201, 236);
             width: 100%;
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
+            color: black;
+            font-family: 'Space Mono', monospace;
         }
+
         .container {
+            margin-top: 80px;
             width: 700px;
             background: rgba(89, 147, 197, 0.479);
             display: flex;
             align-items: center;
             justify-content: center;
-            background: black;
+            border-radius: 20px;
+            background: white;
         }
+
         .box {
             width: 350px;
             height: 350px;
-            display: flex;
+            /* display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: center; */
         }
-        .box1 {
-           
-            border: 1px solid blue;
-            color: white;
+
+        .inputBox {
+            padding: 40px;
+
+            color: rgba(0, 0, 0, 0.685);
+            font-weight: bold;
         }
-        .box2 {
+
+        .resultBox {
             width: 300px;
             height: 300px;
             margin: auto;
-            background: rgb(72, 72, 231);
+            background: hsl(183, 100%, 15%);
             border: 1px solid black;
             border-radius: 16px;
+            color: white;
+            padding: 40px 20px 20px;
         }
-        p {
+
+        .resultBox span {
+            color: hsl(172, 87%, 46%);
+        }
+
+        .resultWrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .resultBox .topBox {
+            margin-bottom: 40px;
+        }
+
+        .resultWrapper div {
+            color: hsl(172, 87%, 46%);
+            font-size: 30px;
+        }
+
+        .resultBox button {
+            width: 100%;
+            height: 40px;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 18px;
+            display: block;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 70px;
+            background: hsl(183, 82%, 27%);
+            font-family: 'Space Mono', monospace;
+            transition: all ease-in-out 1s;
+        }
+
+        .heading {
             font-size: 30px;
             position: absolute;
             top: 60px;
-            color: red;
+            color: hsl(183, 100%, 15%);
+            text-align: center;
+            letter-spacing: 2px;
 
         }
+
+        .container label {
+            display: block;
+            margin-bottom: 4px;
+            position: relative;
+        }
+
+        .container input[type='text'] {
+            width: 100%;
+            height: 40px;
+            font-size: 24px;
+            text-align: right;
+            padding-right: 20px;
+            border: none;
+            background: rgba(245, 227, 227, 0.479);
+        }
+
+        .container input[type='text']:hover {
+            cursor: text;
+        }
+
+        .container input[type='text']:focus {
+            outline-color: hsl(172, 67%, 45%);
+        }
+
+        #billInput {
+            margin-bottom: 15px;
+        }
+
+        .percentageWrapper {
+            margin-bottom: 20px;
+        }
+
+        .container .percentage {
+            border: 1px solid white;
+            text-align: center;
+            color: white;
+            padding: 10px;
+            display: inline-block;
+            width: 80px;
+            height: 40px;
+            margin: 5px auto;
+            font-size: 18px;
+            line-height: 20px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            border-radius: 6px;
+            background: hsl(183, 100%, 15%);
+            /* transition: all ease-in-out 0.8s; */
+            outline: none;
+        }
+
+        .container .percentage:hover {
+            outline: 2px solid hsl(172, 87%, 46%);
+        }
+
+        .container .percentage:active {
+            font-size: 19px;
+        }
+
+        .container #counter {
+            height: 40px;
+            width: 80px;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            display: none;
+
+
+        }
+
+        .container .custom {
+            position: relative;
+            border: none;
+        }
+
+        .container #active {
+            background: hsl(172, 67%, 45%);
+            color: hsl(183, 100%, 15%);
+        }
+
+        .fas {
+            position: absolute;
+            top: 36px;
+            left: 20px;
+        }
+
+        .errorMsg {
+            color: red;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            display: none;
+
+        }
+
+        .errorMsgSecond {
+            top: -20px;
+            left: 10px;
+        }
+
         /*style for responsiveness*/
-        @media screen  and (max-width: 718px){
+        @media screen and (max-width: 718px) {
             body {
                 height: auto;
-                
-                background: yellowgreen;
             }
+
             .container {
                 margin-top: 200px;
                 width: auto;
                 margin-bottom: 200px;
                 flex-direction: column;
             }
-            .box2 {
+
+            .resultBox {
                 margin: 20px auto;
             }
+
         }
     </style>
 </head>
+
 <body>
-    <p>SPLLI<br>TTER</p>
+    <p class="heading">SPLI<br>TTER</p>
     <div class="container">
-        <div class="box1 box">Hey I am box1</div>
-        <div class="box2 box">Hey I am box2</div>
+        <div class="inputBox box">
+            <label for="billInput">Bill <i class="fas fa-dollar-sign"></i><span class="errorMsg errorMsgFirst">Error
+                    message</span></label>
+            <input type="text" id="billInput" placeholder="0.0">
+            <label>Select Tip %</label>
+            <div class="percentageWrapper">
+                <span class="percentage" value='5'>5%</span>
+                <span class="percentage" value='10'>10%</span>
+                <span class="percentage" value='15'>15%</span>
+                <span class="percentage" value='25'>25%</span>
+                <span class="percentage" value='50'>50%</span>
+                <span class="percentage custom">Custom<input type="text" id="counter"></span>
+
+            </div>
+            <label for="counter">Number of People <span class="errorMsg errorMsgSecond">Error message</span><i
+                    class="fas fa-user"></i></label>
+
+            <input type="text" placeholder="0" id="peopleCounter" oninput="counterAdded()" on>
+
+        </div>
+        <div class="resultBox box">
+            <div class="resultWrapper topBox">
+                <p>Tip Amount<br><span>/ person</span></p>
+                <div id="showTip">$0.00</div>
+            </div>
+            <div class="resultWrapper">
+                <p>Total<br><span>/ person</span></p>
+                <div id="showTotal">$0.00</div>
+            </div>
+            <button id="resetBtn" onclick="resetter()" disabled>Reset</button>
+        </div>
     </div>
+
+    <script>
+        //this is the global variable that is needed in one function to hold the percantage value
+        var percentageHolder = 0;
+        //code for making reset button disabled.
+        let resetBtn = document.getElementById("resetBtn");
+        if (resetBtn.disabled == true) {
+            resetBtn.style.cursor = 'auto';
+        }
+        //this is the code for removing existing error msg while clicking on percentage
+        var inputBtn = document.querySelectorAll("input[type='text']");
+        for (let i = 0; i < inputBtn.length; i++) {
+            inputBtn[i].addEventListener("click", inputClicked)
+        }
+        function inputClicked() {
+            errorMsg[0].style.display = 'none';
+            errorMsg[1].style.display = 'none';
+        }
+
+        //getting access to error message array
+        var errorMsg = document.querySelectorAll(".errorMsg");
+        //getting access to percentage button array
+        var percentageBtn = document.querySelectorAll(".inputBox .percentageWrapper > span");
+        //adding onclick event to percentage buttons
+        for (let i = 0; i < percentageBtn.length; i++) {
+            percentageBtn[i].addEventListener('click', percentageClicked);
+        }
+        function percentageClicked(event) {
+            //this attribute remove is used to remove the active id from percentage button
+            attributeRemover();
+            
+            //this event.target is used to recognize and get the element which triggered that event
+            var currentElement = event.target;
+            currentElement.setAttribute('id', 'active');
+            percentageHolder = currentElement.getAttribute('value');
+            let billInput = document.getElementById("billInput").value;
+            let personCounter = document.getElementById("peopleCounter").value;
+            //incase the user clicks percentage first without event entering the bill amount
+            if (billInput == "") {
+                
+                console.log(errorMsg[0].innerText);
+                errorMsg[0].innerText = "Bill cannot be 0 !";
+                errorMsg[0].style.cssText = "display:block; z-index: 3;";
+                currentElement.removeAttribute('id');
+                console.log(errorMsg[0].innerText);
+            }
+            else if(personCounter == "") {
+                console.log("hi");
+                errorMsg[1].style.display= 'block';
+                errorMsg[1].innerText="Person cannot be empty !";
+            }
+            //if the bill is not empty and personCounter is entered succesfully
+            else {
+                let percent = currentElement.innerText;
+                console.log(parseFloat(percent));
+                //this function is actually used to create all the calculation and we have passed the percentage to function
+                resultGenerator(percent);
+            }
+        }
+        //function to remove the attribute
+        function attributeRemover() {
+            for (let i = 0; i < percentageBtn.length; i++) {
+                percentageBtn[i].removeAttribute('id');
+            }
+        }
+        //calculates everything we need to show
+        function resultGenerator(percent) {
+            let bill = parseFloat(document.getElementById("billInput").value);
+            let noOfPerson = parseInt(document.getElementById("peopleCounter").value);
+            let percentage = parseFloat(percent);
+
+            const tipAmount = (bill * percentage) / 100;
+            const tipPerPerson = tipAmount / noOfPerson;
+            const totalPerPerson = (bill + tipAmount) / noOfPerson;
+            // console.log(`tipPerPerson ${tipPerPerson} totalPerPerson ${totalPerPerson}`);
+            var showTip = document.getElementById("showTip");
+            var showTotal = document.getElementById("showTotal");
+            showTip.innerText = "$" + tipPerPerson.toFixed(2);
+            showTotal.innerText = "$" + totalPerPerson.toFixed(2);
+            resetActivator();
+
+        }
+        //function to remove the disabled attribute of button
+        function resetActivator() {
+            resetBtn.disabled = false;
+            resetBtn.style.cursor = 'pointer';
+            resetBtn.style.backgroundColor = "hsl(185, 41%, 84%)";
+        }
+        //function to clear everything
+        function resetter() {
+            let people = document.getElementById("peopleCounter");
+            let bill = document.getElementById("billInput");
+            let showTip = document.getElementById("showTip");
+            let showTotal = document.getElementById("showTotal");
+            bill.value = '';
+            people.value='';
+            showTip.innerText="$0.00";
+            showTotal.innerText="$0.00";   
+            attributeRemover();  
+            errorMsgHider();       
+        }
+
+        function counterAdded() {
+            errorMsgHider();
+            //accessing the number of people and bill amount
+            let people = document.getElementById("peopleCounter").value;
+            let bill = document.getElementById("billInput").value;
+           
+           if(bill==""||bill==0){
+            errorMsg[0].style.display = 'block';
+            errorMsg[0].innerText = "Bill cannot be empty !";
+           }
+            else if (people == " "|| people== 0) {
+                console.log("I reached in if condition");
+                errorMsg[1].style.display = 'block';
+                errorMsg[1].innerText = "People cannot be empty !";
+            }
+
+            else {
+                console.log("i reached in else condition");
+                if (percentageHolder == 0) {
+                    errorMsg[0].style.display = 'block';
+                    errorMsg[0].innerText = "Select the percentage";
+                }
+                else {
+                    resultGenerator(percentageHolder);
+                    errorMsg[0].style.display = "none";
+                }
+
+            }
+
+
+        }
+        function errorMsgHider(){
+            for(let i=0;i<errorMsg.length;i++){
+                errorMsg[i].style.display= 'none';
+                
+            }
+        }
+        //this actually removes the error message while clicked to 
+    //    document.body.addEventListener('click',errorMsgHider);
+    </script>
 </body>
+
 </html>
