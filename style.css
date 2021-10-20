@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 
-body {
+body,main {
     background: rgb(162, 201, 236);
     width: 100%;
     height: 100vh;
@@ -97,6 +97,7 @@ body {
     color: hsl(183, 100%, 15%);
     text-align: center;
     letter-spacing: 2px;
+    font-weight: 400;
 
 }
 
@@ -207,7 +208,7 @@ body {
 
 /*style for responsiveness*/
 @media screen and (max-width: 718px) {
-    body {
+    body ,main{
         height: auto;
     }
 
