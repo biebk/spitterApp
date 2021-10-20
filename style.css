@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: rgb(162, 201, 236);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: black;
+    font-family: 'Space Mono', monospace;
+}
+
+.container {
+    margin-top: 80px;
+    width: 700px;
+    background: rgba(89, 147, 197, 0.479);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    background: white;
+}
+
+.box {
+    width: 350px;
+    height: 350px;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+
+.inputBox {
+    padding: 40px;
+
+    color: rgba(0, 0, 0, 0.685);
+    font-weight: bold;
+}
+
+.resultBox {
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    background: hsl(183, 100%, 15%);
+    border: 1px solid black;
+    border-radius: 16px;
+    color: white;
+    padding: 40px 20px 20px;
+}
+
+.resultBox span {
+    color: hsl(172, 87%, 46%);
+}
+
+.resultWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.resultBox .topBox {
+    margin-bottom: 40px;
+}
+
+.resultWrapper div {
+    color: hsl(172, 87%, 46%);
+    font-size: 30px;
+}
+
+.resultBox button {
+    width: 100%;
+    height: 40px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 18px;
+    display: block;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 70px;
+    background: hsl(183, 82%, 27%);
+    font-family: 'Space Mono', monospace;
+    transition: all ease-in-out 1s;
+}
+
+.heading {
+    font-size: 30px;
+    position: absolute;
+    top: 60px;
+    color: hsl(183, 100%, 15%);
+    text-align: center;
+    letter-spacing: 2px;
+
+}
+
+.container label {
+    display: block;
+    margin-bottom: 4px;
+    position: relative;
+}
+
+.container input[type='text'] {
+    width: 100%;
+    height: 40px;
+    font-size: 24px;
+    text-align: right;
+    padding-right: 20px;
+    border: none;
+    background: rgba(245, 227, 227, 0.479);
+}
+
+.container input[type='text']:hover {
+    cursor: text;
+}
+
+.container input[type='text']:focus {
+    outline-color: hsl(172, 67%, 45%);
+}
+
+#billInput {
+    margin-bottom: 15px;
+}
+
+.percentageWrapper {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.container .percentage,.container .custom {
+    border: 1px solid white;
+    text-align: center;
+    color: white;
+    padding: 10px;
+    display: inline-block;
+    width: 80px;
+    height: 40px;
+    margin: 5px auto;
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    background: hsl(183, 100%, 15%);
+    /* transition: all ease-in-out 0.8s; */
+    outline: none;
+}
+
+.container .percentage:hover, .container .custom:hover {
+    outline: 2px solid hsl(172, 87%, 46%);
+}
+
+.container .percentage:active, .container .custom:active {
+    font-size: 19px;
+}
+
+.container #counter {
+    height: 40px;
+    width: 80px;
+    position: absolute;
+    top: 55px;
+    right: 10px;
+    /* z-index: -2; */
+    display: none;
+    background: red;
+    border-radius: 4px;
+
+
+}
+
+.container .custom {
+    position: relative;
+    border: none;
+}
+
+.container #active {
+    background: hsl(172, 67%, 45%);
+    color: hsl(183, 100%, 15%);
+}
+
+.fas {
+    position: absolute;
+    top: 36px;
+    left: 20px;
+}
+
+.errorMsg {
+    color: red;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    display: none;
+
+}
+
+.errorMsgSecond {
+    top: -20px;
+    left: 10px;
+}
+
+/*style for responsiveness*/
+@media screen and (max-width: 718px) {
+    body {
+        height: auto;
+    }
+
+    .container {
+        margin-top: 200px;
+        width: auto;
+        margin-bottom: 200px;
+        flex-direction: column;
+    }
+
+    .resultBox {
+        margin: 20px auto;
+    }
+
+}
