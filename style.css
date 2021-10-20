@@ -214,7 +214,7 @@ body {
     .container {
         margin-top: 200px;
         width: auto;
-        margin-bottom: 200px;
+        margin-bottom: 20px;
         flex-direction: column;
     }
 
